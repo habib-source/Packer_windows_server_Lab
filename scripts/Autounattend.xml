@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<unattend xmlns="urn:schemas-microsoft-com:unattend">
+    <settings pass="windowsPE">
+        <component name="Microsoft-Windows-PnpCustomizationsWinPE" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" processorArchitecture="amd64" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State">
+            <DriverPaths>
+                <PathAndCredentials wcm:action="add" wcm:keyValue="2">
+                    <Path>E:\viostor\2k25\amd64</Path>
+                </PathAndCredentials>
+
+                <PathAndCredentials wcm:action="add" wcm:keyValue="3">
+                    <Path>E:\NetKVM\2k25\amd64</Path>
+                </PathAndCredentials>
+
+                <PathAndCredentials wcm:action="add" wcm:keyValue="4">
+                    <Path>E:\Balloon\2k25\amd64</Path>
+                </PathAndCredentials>
+
+                <PathAndCredentials wcm:action="add" wcm:keyValue="5">
+                    <Path>E:\pvpanic\2k25\amd64</Path>
+                </PathAndCredentials>
+
+                <PathAndCredentials wcm:action="add" wcm:keyValue="6">
+                    <Path>E:\qemupciserial\2k25\amd64</Path>
+                </PathAndCredentials>
+
+                <PathAndCredentials wcm:action="add" wcm:keyValue="8">
+                    <Path>E:\vioinput\2k25\amd64</Path>
+                </PathAndCredentials>
+
+                <PathAndCredentials wcm:action="add" wcm:keyValue="9">
+                    <Path>E:\viorng\2k25\amd64</Path>
+                </PathAndCredentials>
+
+                <PathAndCredentials wcm:action="add" wcm:keyValue="10">
+                    <Path>E:\vioscsi\2k25\amd64</Path>
+                </PathAndCredentials>
+
+                <PathAndCredentials wcm:action="add" wcm:keyValue="11">
+                    <Path>E:\vioserial\2k25\amd64</Path>
+                </PathAndCredentials>
+            </DriverPaths>
+        </component>
+        <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+            <SetupUILanguage>
+                <UILanguage>en-US</UILanguage>
+            </SetupUILanguage>
+            <InputLocale>en-US</InputLocale>
+            <SystemLocale>en-US</SystemLocale>
+            <UILanguage>en-US</UILanguage>
+            <UILanguageFallback>en-US</UILanguageFallback>
+            <UserLocale>en-US</UserLocale>
+        </component>
+        <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+            <DiskConfiguration>
+                <Disk wcm:action="add">
+                    <CreatePartitions>
+                        <CreatePartition wcm:action="add">
+                            <Order>1</Order>
+                            <Type>Primary</Type>
+                            <Size>350</Size>
+                        </CreatePartition>
+                        <CreatePartition wcm:action="add">
+                            <Order>2</Order>
+                            <Type>Primary</Type>
+                            <Extend>true</Extend>
+                        </CreatePartition>
+                    </CreatePartitions>
+                    <ModifyPartitions>
+                        <ModifyPartition wcm:action="add">
+                            <Active>true</Active>
+                            <Format>NTFS</Format>
+                            <Label>boot</Label>
+                            <Order>1</Order>
+                            <PartitionID>1</PartitionID>
+                        </ModifyPartition>
+                        <ModifyPartition wcm:action="add">
+                            <Format>NTFS</Format>
+                            <Label>Windows 2025</Label>
+                            <Letter>C</Letter>
+                            <Order>2</Order>
+                            <PartitionID>2</PartitionID>
+                        </ModifyPartition>
+                    </ModifyPartitions>
+                    <DiskID>0</DiskID>
+                    <WillWipeDisk>true</WillWipeDisk>
+                </Disk>
+            </DiskConfiguration>
+            <ImageInstall>
+                <OSImage>
+                    <InstallFrom>
+                        <MetaData wcm:action="add">
+                            <Key>/IMAGE/NAME</Key>
+                            <Value>Windows Server 2025 SERVERDATACENTERCORE</Value>
+                        </MetaData>
+                    </InstallFrom>
+                    <InstallTo>
+                        <DiskID>0</DiskID>
+                        <PartitionID>2</PartitionID>
+                    </InstallTo>
+                </OSImage>
+            </ImageInstall>
+            <UserData>
+                <ProductKey>
+                    <WillShowUI>OnError</WillShowUI>
+                </ProductKey>
+                <AcceptEula>true</AcceptEula>
+                <FullName>Admin</FullName>
+                <Organization>Admin</Organization>
+            </UserData>
+        </component>
+    </settings>
+    <settings pass="specialize">
+        <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+            <OEMInformation>
+                <HelpCustomized>false</HelpCustomized>
+            </OEMInformation>
+            <ComputerName>admin-2025</ComputerName>
+            <TimeZone>Central European Standard Time</TimeZone>
+            <RegisteredOwner/>
+        </component>
+    </settings>
+    <settings pass="oobeSystem">
+        <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+            <AutoLogon>
+                <Password>
+                    <Value>admin</Value>
+                    <PlainText>true</PlainText>
+                </Password>
+                <Enabled>true</Enabled>
+                <Username>admin</Username>
+            </AutoLogon>
+	    <FirstLogonCommands>
+	        <SynchronousCommand wcm:action="add">
+	            <Order>1</Order>
+	            <Description>Update Get-Help</Description>
+	            <CommandLine>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -Command "Update-Help -ErrorAction SilentlyContinue"</CommandLine>
+	        </SynchronousCommand>
+	        <SynchronousCommand wcm:action="add">
+	            <Order>2</Order>
+	            <Description>Install PowerShell</Description>
+	            <CommandLine>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -Command "curl.exe -L https://github.com/PowerShell/PowerShell/releases/download/v7.6.0/PowerShell-7.6.0-win-x64.msi --output $env:TEMP\PowerShell.msi; msiexec.exe /package $env:TEMP\PowerShell.msi /quiet ADD_EXPLORER_CONTEXT_MENU_OPENPOWERSHELL=1 ADD_FILE_CONTEXT_MENU_RUNPOWERSHELL=1 ENABLE_PSREMOTING=1 ADD_PATH=1"
+"</CommandLine>
+	        </SynchronousCommand>
+	        <SynchronousCommand wcm:action="add">
+	            <Order>3</Order>
+	            <Description>Set pwsh as default shell</Description>
+	            <CommandLine>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File a:\pwsh-default.ps1
+"</CommandLine>
+	        </SynchronousCommand>
+	        <SynchronousCommand wcm:action="add">
+	            <Order>4</Order>
+	            <Description>Enable sshd</Description>
+	            <CommandLine>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -Command "Set-Service -Name sshd -StartupType 'Automatic'; Start-Service sshd;New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22"</CommandLine>
+	        </SynchronousCommand>
+	    </FirstLogonCommands>
+            <UserAccounts>
+                <AdministratorPassword>
+                    <Value>admin</Value>
+                    <PlainText>true</PlainText>
+                </AdministratorPassword>
+                <LocalAccounts>
+                    <LocalAccount wcm:action="add">
+                        <Password>
+                            <Value>admin</Value>
+                            <PlainText>true</PlainText>
+                        </Password>
+                        <Group>administrators</Group>
+                        <DisplayName>Admin</DisplayName>
+                        <Name>admin</Name>
+                        <Description>Admin User</Description>
+                    </LocalAccount>
+                </LocalAccounts>
+            </UserAccounts>
+            <RegisteredOwner/>
+        </component>
+    </settings>
+    <settings pass="offlineServicing">
+        <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-LUA-Settings" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+            <EnableLUA>false</EnableLUA>
+        </component>
+    </settings>
+</unattend>
