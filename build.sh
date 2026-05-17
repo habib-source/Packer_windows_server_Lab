@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ ! -d "media" ]; then
+if [ ! -d "drive" ]; then
 	mkdir drive
 fi
 if [ ! -e "./drive/virtio.iso" ]; then

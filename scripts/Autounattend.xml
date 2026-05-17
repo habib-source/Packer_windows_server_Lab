@@ -152,6 +152,16 @@
 	            <Description>Enable sshd</Description>
 	            <CommandLine>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -Command "Set-Service -Name sshd -StartupType 'Automatic'; Start-Service sshd;New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22"</CommandLine>
 	        </SynchronousCommand>
+	        <SynchronousCommand wcm:action="add">
+	            <Order>5</Order>
+	            <Description>Set Static IPV4</Description>
+	            <CommandLine>C:\Program Files\PowerShell\7\pwsh.exe -File a:\Static-IPV4.ps1</CommandLine>
+	        </SynchronousCommand>
+	        <SynchronousCommand wcm:action="add">
+	            <Order>6</Order>
+	            <Description>Performanse settings</Description>
+	            <CommandLine>C:\Program Files\PowerShell\7\pwsh.exe -Command "powercfg /setactive SCHEME_MIN; powercfg /setacvalueindex SCHEME_MIN SUB_VIDEO VIDEOIDLE 0; powercfg /setdcvalueindex SCHEME_MIN SUB_VIDEO VIDEOIDLE 0; powercfg /setactive SCHEME_MIN"</CommandLine>
+	        </SynchronousCommand>
 	    </FirstLogonCommands>
             <UserAccounts>
                 <AdministratorPassword>
