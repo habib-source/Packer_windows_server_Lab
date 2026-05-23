@@ -155,7 +155,7 @@
 	        <SynchronousCommand wcm:action="add">
 	            <Order>5</Order>
 	            <Description>Set Static IPV4</Description>
-	            <CommandLine>C:\Program Files\PowerShell\7\pwsh.exe -File a:\Static-IPV4.ps1</CommandLine>
+	            <CommandLine>C:\Program Files\PowerShell\7\pwsh.exe a:\Static-IPV4.ps1</CommandLine>
 	        </SynchronousCommand>
 	        <SynchronousCommand wcm:action="add">
 	            <Order>6</Order>
